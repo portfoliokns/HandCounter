@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,9 +8,26 @@ import {
   Alert,
 } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
+import "react-native-gesture-handler";
 
+let actionState = "";
 export default function Counter() {
   const [count, setCount] = useState(0);
+  const [history, setHistory] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (count === 0) return;
+    const action = `${actionState}：${count}`;
+    setHistory((prevHistory) => [...prevHistory, action]);
+  }, [count]);
+
+  useEffect(() => {
+    console.log(history);
+  }, [history]);
+
+  const changeActionState = (status: string) => {
+    actionState = status;
+  };
 
   const reset = () => {
     if (count === 0) {
@@ -47,19 +64,37 @@ export default function Counter() {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.resetButton} onPress={reset}>
+        <TouchableOpacity
+          style={styles.resetButton}
+          onPress={() => {
+            changeActionState("リセットを押しました");
+            reset();
+          }}
+        >
           <Text style={[styles.buttonText, { fontSize: RFValue(30) }]}>
             リセット
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.minusButton} onPress={decrement}>
+        <TouchableOpacity
+          style={styles.minusButton}
+          onPress={() => {
+            changeActionState("マイナスを押しました");
+            decrement();
+          }}
+        >
           <Text style={[styles.buttonText, { fontSize: RFValue(30) }]}>
             マイナス
           </Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.countText}>{count}</Text>
-      <TouchableOpacity style={styles.countButton} onPress={increment}>
+      <TouchableOpacity
+        style={styles.countButton}
+        onPress={() => {
+          changeActionState("カウントを押しました");
+          increment();
+        }}
+      >
         <Text style={[styles.buttonText, { fontSize: RFValue(50) }]}>
           カウント
         </Text>
@@ -110,7 +145,7 @@ const styles = StyleSheet.create({
   },
   countButton: {
     position: "absolute",
-    top: height * 0.69,
+    top: height * 0.63,
     height: height * 0.26,
     width: width * 0.96,
     backgroundColor: "#4660B4",
