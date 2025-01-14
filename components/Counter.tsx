@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
+  Alert,
 } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
@@ -12,7 +13,25 @@ export default function Counter() {
   const [count, setCount] = useState(0);
 
   const reset = () => {
-    setCount(0);
+    if (count === 0) {
+      return;
+    }
+
+    Alert.alert(
+      "リセットしますか？",
+      "カウントを0にリセットします",
+      [
+        {
+          text: "キャンセル",
+          style: "cancel",
+        },
+        {
+          text: "リセット",
+          onPress: () => setCount(0),
+        },
+      ],
+      { cancelable: true }
+    );
   };
 
   const increment = () => {
@@ -53,6 +72,7 @@ const { height, width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#FFFFFF",
     flex: 1,
     padding: 3,
     justifyContent: "center",
@@ -91,7 +111,7 @@ const styles = StyleSheet.create({
   countButton: {
     position: "absolute",
     top: height * 0.69,
-    height: height * 0.3,
+    height: height * 0.26,
     width: width * 0.96,
     backgroundColor: "#4660B4",
     borderRadius: 5,
