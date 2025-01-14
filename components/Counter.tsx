@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default function Counter() {
   const [count, setCount] = useState(0);
@@ -28,15 +29,21 @@ export default function Counter() {
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.resetButton} onPress={reset}>
-          <Text style={styles.buttonText}>リセット</Text>
+          <Text style={[styles.buttonText, { fontSize: RFValue(30) }]}>
+            リセット
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.minusButton} onPress={decrement}>
-          <Text style={styles.buttonText}>マイナス</Text>
+          <Text style={[styles.buttonText, { fontSize: RFValue(30) }]}>
+            マイナス
+          </Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.countText}>{count}</Text>
       <TouchableOpacity style={styles.countButton} onPress={increment}>
-        <Text style={styles.buttonText}>カウント</Text>
+        <Text style={[styles.buttonText, { fontSize: RFValue(50) }]}>
+          カウント
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -76,9 +83,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  countText: {
+    position: "absolute",
+    top: height * 0.3,
+    fontSize: 150,
+  },
   countButton: {
     position: "absolute",
-    bottom: 8,
+    top: height * 0.69,
     height: height * 0.3,
     width: width * 0.96,
     backgroundColor: "#4660B4",
@@ -87,13 +99,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: {
-    padding: 5,
     color: "white",
-    fontSize: 30,
-  },
-  countText: {
-    position: "absolute",
-    top: height * 0.2,
-    fontSize: 150,
   },
 });
