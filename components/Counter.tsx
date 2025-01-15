@@ -10,10 +10,14 @@ import {
 import { RFValue } from "react-native-responsive-fontsize";
 import "react-native-gesture-handler";
 
+type CounterProps = {
+  history: string[];
+  setHistory: React.Dispatch<React.SetStateAction<string[]>>;
+};
+
 let actionState = "";
-export default function Counter() {
+export default function Counter({ history, setHistory }: CounterProps) {
   const [count, setCount] = useState(0);
-  const [history, setHistory] = useState<string[]>([]);
 
   useEffect(() => {
     if (count === 0) return;

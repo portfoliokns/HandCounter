@@ -7,10 +7,15 @@ import {
   Dimensions,
 } from "react-native";
 
-export default function History() {
+type CounterProps = {
+  history: string[];
+  setHistory: React.Dispatch<React.SetStateAction<string[]>>;
+};
+
+export default function History({ history, setHistory }: CounterProps) {
   return (
     <View>
-      <Text>カウンター</Text>
+      <Text>{history}</Text>
     </View>
   );
 }

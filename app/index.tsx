@@ -18,8 +18,14 @@ export default function HomePage() {
         },
       }}
     >
-      <Tab.Screen name="カウンター" component={Counter} />
-      <Tab.Screen name="履歴" component={History} />
+      <Tab.Screen
+        name="カウンター"
+        children={() => <Counter history={history} setHistory={setHistory} />}
+      />
+      <Tab.Screen
+        name="履歴"
+        children={() => <History history={history} setHistory={setHistory} />}
+      />
     </Tab.Navigator>
   );
 }
