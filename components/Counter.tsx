@@ -15,19 +15,14 @@ type CounterProps = {
   setHistory: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-let actionState = "";
+let actionState = "カウントを開始しました";
 export default function Counter({ history, setHistory }: CounterProps) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (count === 0) return;
     const action = `${actionState}：${count}`;
     setHistory((prevHistory) => [...prevHistory, action]);
   }, [count]);
-
-  useEffect(() => {
-    console.log(history);
-  }, [history]);
 
   const changeActionState = (status: string) => {
     actionState = status;

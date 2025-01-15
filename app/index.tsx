@@ -23,7 +23,7 @@ export default function HomePage() {
         children={() => <Counter history={history} setHistory={setHistory} />}
       />
       <Tab.Screen
-        name="履歴"
+        name="操作履歴"
         children={() => <History history={history} setHistory={setHistory} />}
       />
     </Tab.Navigator>
