@@ -8,7 +8,7 @@
 
 2. "Expo Go"を起動し、ローカルネットワークへのアクセスを許可する（おそらく許可しないと使えないと思う）
 
-3. ブラウザから次のアドレスへアクセスし、Expo Go の Open を押す。またはカメラを起動し QR コードを読み込む([こちら](https://expo.dev/preview/update?message=%E3%82%A2%E3%83%97%E3%83%AA%E5%85%AC%E9%96%8B&updateRuntimeVersion=1.0.0&createdAt=2025-01-16T08%3A16%3A27.486Z&slug=exp&projectId=ad324410-3818-4179-8dea-d9c85f419877&group=83344714-9c7b-46f5-abd9-798b62131d6b))
+3. ブラウザから次のアドレスへアクセスし、Expo Go の Open を押す。またはカメラを起動し QR コードを読み込む([こちら](https://expo.dev/preview/update?message=Sdk52%E2%86%9253%E5%AF%BE%E5%BF%9C&updateRuntimeVersion=1.0.0&createdAt=2025-05-17T13%3A26%3A16.387Z&slug=exp&projectId=ad324410-3818-4179-8dea-d9c85f419877&group=cc244256-86aa-4ad0-9578-cb83d1c677a7))
 
 # アプリの使い方
 
